@@ -1,0 +1,129 @@
+The tests will be written using the pytest framework. The tests will be organized into various files corresponding to the classes and functions described in the design of the inventory management system. 
+
+Here are the test files as per the specification mentioned above:
+
+`test_product.py`
+```python
+import pytest
+from product import Product
+
+def test_product_creation():
+    product = Product('Shirt', 'S', 'Blue', cost=20)
+    assert product.name == 'Shirt'
+    assert product.size == 'S'
+    assert product.color == 'Blue'
+    assert product.cost == 20
+
+def test_update_product_attributes():
+    product = Product('Shirt', 'S', 'Blue', cost=20)
+    product.update('Shirt', 'M', 'Red', 25)
+    assert product.size == 'M'
+    assert product.color == 'Red'
+    assert product.cost == 25
+```
+
+`test_inventory.py`
+```python
+import pytest
+from inventory import Inventory
+from product import Product
+
+def test_add_product():
+    inventory = Inventory()
+    product = Product('Shirt', 'S', 'Blue', cost=20)
+    inventory.add_product(product)
+    assert len(inventory.products) == 1
+
+def test_update_product():
+    inventory = Inventory()
+    product = Product('Shirt', 'S', 'Blue', cost=20)
+    inventory.add_product(product)
+    product.update('Shirt', 'M', 'Red', 25)
+    assert inventory.products[0].size == 'M'
+    assert inventory.products[0].color == 'Red'
+    assert inventory.products[0].cost == 25
+
+def test_remove_product():
+    inventory = Inventory()
+    product = Product('Shirt', 'S', 'Blue', cost=20)
+    inventory.add_product(product)
+    inventory.remove_product(product)
+    assert len(inventory.products) == 0
+```
+
+`test_supplier.py`
+```python
+import pytest
+from supplier import Supplier
+
+def test_supplier_creation():
+    supplier = Supplier('John Doe', 'john@example.com', '1234567890')
+    assert supplier.name == 'John Doe'
+    assert supplier.email == 'john@example.com'
+    assert supplier.phone == '1234567890
+```
+
+`test_salesdata.py`
+```python
+import pytest
+from salesdata import SalesData
+from product import Product
+
+def test_add_sale():
+    product = Product('Shirt', 'M', 'Red', cost=25)
+    sales_data = SalesData()
+    sales_data.add_sale(product, 5)
+    assert sales_data.sales[product] == 5
+
+def test_generate_report():
+    product = Product('Shirt', 'M', 'Red', cost=25)
+    sales_data = SalesData()
+    sales_data.add_sale(product, 5)
+    report = sales_data.generate_report()
+    assert report[product] == 5
+```
+
+`test_user.py`
+```python
+import pytest
+from user import User
+
+def test_user_creation():
+    user = User('johndoe', 'password123', 'owner')
+    assert user.username == 'johndoe'
+    assert user.validate_password('password123')
+    assert user.role == 'owner'
+```
+
+`test_system_functions.py`
+```python
+import pytest
+from alert import alert
+from autoorder import autoorder
+from securelogin import securelogin
+from user import User
+from product import Product
+from inventory import Inventory
+
+def test_alert():
+    product = Product('Shirt', 'M', 'Red', 25)
+    inventory = Inventory()
+    inventory.add_product(product)
+    product.stock = 5
+    product.reorder_level = 10
+    assert alert(inventory) == [product]
+
+def test_autoorder():
+    product = Product('Shirt', 'M', 'Red', 25)
+    inventory = Inventory()
+    inventory.add_product(product)
+    product.stock = 5
+    product.reorder_level = 10
+    assert autoorder(inventory) == [product]
+
+def test_secure_login():
+    user = User('johndoe', 'password123', 'owner')
+    assert securelogin('johndoe', 'password123') == user
+```
+
+These tests cover the functionality described in the specifications in line with the principles of Test Driven Development. They should be run before any code writing to ensure that the system behaves as expected.
