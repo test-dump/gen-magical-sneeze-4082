@@ -1,0 +1,31 @@
+### Program Specification
+
+#### Description:
+An inventory management system for a small garment shop. The program will keep track of items in stock, notify the owner when stock is low and automate the reordering process. This program will also keep track of sales data, allowing the owner to run reports on which items are selling well and which are not.
+
+#### Features and Functionalities:
+1. **Inventory Management:** Keep track of items in stock, their sizes, colors, and costs. 
+2. **Low Stock Alert:** Notify the owner when the stock of any item falls below a certain threshold.
+3. **Automated Reordering:** Automatically place an order to the supplier when stock falls below the reordering point.
+4. **Sales Data Collection and Reporting:** Keep track of the sales data and allow the owner to run reports on which items are selling well and which are not.
+5. **Secure Access:** The system should require login credentials and should support role-based access control.
+6. **Web-based User Interface:** A simple, intuitive web interface for interacting with the system.
+
+### Core Classes, Functions, and Methods:
+1. **Product:** A class representing a product. It contains attributes such as name, size, color, and cost and methods to update these attributes.
+2. **Inventory:** A class representing the inventory. It contains a list of products and methods to add, update, or remove products.
+3. **Supplier:** A class representing a supplier. It contains contact information of the supplier and methods to place orders.
+4. **SalesData:** A class representing sales data for a particular product. It contains methods to add sales data, and generate sales reports.
+5. **User:** A class representing a user. It contains attributes such as user name, password and role.
+6. **Alert:** A function that checks if any product's stock is below the reorder level and sends an alert.
+7. **AutoOrder:** A function that automatically places an order to the supplier when the stock falls below the reordering point.
+8. **SecureLogin:** A function that takes a username and password, validates them, and returns a user object if the credentials are valid.
+
+### Non-Standard Dependencies:
+1. **Flask:** A micro web framework for Python. It's light and ideal for small-scale applications.
+2. **SQLAlchemy:** A SQL toolkit and Object-Relational Mapping(ORM) system for Python. It provides a full suite of well-known enterprise-level persistence patterns.
+3. **Jinja2:** A modern and designer-friendly templating language for Python, needed to build the user interface.
+4. **Pytest:** A testing framework that allows developers to write simple, scalable tests quickly.
+5. **Bootstrap:** A popular CSS Framework for developing responsive and mobile-first websites. 
+
+Later, the specifications will be implemented while writing codes for those features and functionalities. Programming languages such as Python along with its libraries like Flask, SQLAlchemy etc. will be used to carry out the functionalities laid out in the specifications.
